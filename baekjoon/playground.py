@@ -1,15 +1,17 @@
 import sys
 
-lines = sys.stdin.read().splitlines()
+t = int(sys.stdin.readline())
 
-m = 0
+for _ in range(t):
+    l = sys.stdin.readline().rstrip()
+    total = 0
+    score = 0
+    for i in l:
+        if i == 'O':
+            score += 1
+            total += score
+        else:
+            score = 0
+            total += score
 
-for line in lines:
-    tmp = max(map(int, (line.split())))
-    col = lines.index(tmp)
-    if m < tmp:
-        m = tmp
-        r, c = lines.index(line) + 1, col + 1
-        
-print(m)
-print(r, c)
+    print(total)
