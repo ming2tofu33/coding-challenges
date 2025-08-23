@@ -1,17 +1,19 @@
+# 11047 "동전 0"
+
 import sys
 
-t = int(sys.stdin.readline())
+n, k = map(int, sys.stdin.readline().split())
+a = [int(sys.stdin.readline()) for _ in range(n)]
 
-for _ in range(t):
-    l = sys.stdin.readline().rstrip()
-    total = 0
-    score = 0
-    for i in l:
-        if i == 'O':
-            score += 1
-            total += score
-        else:
-            score = 0
-            total += score
+i = n - 1
+while i >= 0 and a[i] > k:
+    i -= 1
 
-    print(total)
+c = 0
+while k > 0 and i >= 0:
+    if a[i] <= k:
+        c += k // a[i]
+        k %= a[i]
+    i -= 1
+
+print(c)
