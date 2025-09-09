@@ -1,19 +1,30 @@
-# 11047 "동전 0"
-
 import sys
 
-n, k = map(int, sys.stdin.readline().split())
-a = [int(sys.stdin.readline()) for _ in range(n)]
+input = sys.stdin.readline
 
-i = n - 1
-while i >= 0 and a[i] > k:
-    i -= 1
+m = int(input())
+s = set()
+out = []
 
-c = 0
-while k > 0 and i >= 0:
-    if a[i] <= k:
-        c += k // a[i]
-        k %= a[i]
-    i -= 1
+for _ in range(m):
+    line = input().strip()
+    if line == "all":
+        s = set(range(1, 21))
+    elif line == "empty":
+        s.clear()
+    else:
+        op, xs = line.split()
+        x = int(xs)
+        if op == "add":
+            s.add(x)
+        elif op == "remove":
+            s.discard(x)
+        elif op == "check":
+            out.append('1' if x in s else '0')
+        elif op == "toggle":
+            if x in s:
+                s.remove(x)
+            else:
+                s.add(x)
 
-print(c)
+sys.stdout.write("\n".join(out))
