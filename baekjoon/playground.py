@@ -1,11 +1,8 @@
 import sys
 
-n, m = map(int, sys.stdin.readline().split())
-l = list(map(int, sys.stdin.readline().split()))
-s = []
+t = int(sys.stdin.readline())
 
-for _ in range(m):
-    i, j = map(int, sys.stdin.readline().split())
-    s.append(sum(l[i - 1: j ]))
-
-print('\n'.join([str(k) for k in s]))
+for _ in range(t):
+    _ = int(sys.stdin.readline())
+    n = list(map(int, sys.stdin.readline().split()))
+    print(min(n), max(n))
