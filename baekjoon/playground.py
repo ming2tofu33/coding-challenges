@@ -2,24 +2,13 @@ import sys
 
 n = int(sys.stdin.readline())
 
-d = {}
+cnt = [0] * 10001
 
 for _ in range(n):
-    lastname = sys.stdin.readline()[0]
-    if lastname in d:
-        d[lastname] += 1
-    else:
-        d[lastname] = 1
+    a = int(sys.stdin.readline())
+    cnt[a] += 1
 
-l = []
-
-for i in d:
-    if d[i] >= 5:
-        l.append(i)
-
-l.sort()
-
-if l:
-    print(''.join([j for j in l]))
-else:
-    print("PREDAJA")
+for i in range(1, 10001):
+    c = cnt[i]
+    if c:
+        sys.stdout.write((str(i) + '\n') * c)
