@@ -1,11 +1,25 @@
 import sys
 
 n = int(sys.stdin.readline())
-s1 = set(map(int, sys.stdin.readline().split()))
-m = int(sys.stdin.readline())
-l = list(map(int, sys.stdin.readline().split()))
-s2 = set(l)
 
-dif = s2 - s1
+d = {}
 
-print('\n'.join(['0' if i in dif else '1' for i in l]))
+for _ in range(n):
+    lastname = sys.stdin.readline()[0]
+    if lastname in d:
+        d[lastname] += 1
+    else:
+        d[lastname] = 1
+
+l = []
+
+for i in d:
+    if d[i] >= 5:
+        l.append(i)
+
+l.sort()
+
+if l:
+    print(''.join([j for j in l]))
+else:
+    print("PREDAJA")
