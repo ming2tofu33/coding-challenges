@@ -1,14 +1,13 @@
 import sys
 
-n = int(sys.stdin.readline())
+k = int(sys.stdin.readline())
+stack = []
 
-cnt = [0] * 10001
-
-for _ in range(n):
-    a = int(sys.stdin.readline())
-    cnt[a] += 1
-
-for i in range(1, 10001):
-    c = cnt[i]
-    if c:
-        sys.stdout.write((str(i) + '\n') * c)
+for _ in range(k):
+    x = int(sys.stdin.readline())
+    if x == 0:
+        stack.pop()
+    else:
+        stack.append(x)
+        
+print(sum(stack))
