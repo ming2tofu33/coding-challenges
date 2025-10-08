@@ -1,13 +1,7 @@
 import sys
 
-k = int(sys.stdin.readline())
-stack = []
+n = int(sys.stdin.readline())
+pts = [tuple(map(int, sys.stdin.readline().split())) for _ in range(n)]
+pts.sort()
 
-for _ in range(k):
-    x = int(sys.stdin.readline())
-    if x == 0:
-        stack.pop()
-    else:
-        stack.append(x)
-        
-print(sum(stack))
+sys.stdout.write('\n'.join(f'{x} {y}' for x, y in pts))
