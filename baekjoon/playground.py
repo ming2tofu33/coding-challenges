@@ -1,9 +1,8 @@
-# 11651 "좌표 정렬하기"
-
 import sys
 
 n = int(sys.stdin.readline())
-pairs = [tuple(reversed(tuple(map(int, sys.stdin.readline().split())))) for _ in range(n)]  # (y,x)
-pairs.sort()
+age_name = [sys.stdin.readline().split() for _ in range(n)]
 
-sys.stdout.write('\n'.join(f'{x} {y}' for y, x in pairs))
+age_name.sort(key=lambda x: (int(x[0])))
+
+sys.stdout.write('\n'.join(f'{x} {y}' for x, y in age_name))
