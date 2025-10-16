@@ -1,8 +1,13 @@
+# 11659 "구간 합 구하기 4"
+
 import sys
 
-n = int(sys.stdin.readline())
-age_name = [sys.stdin.readline().split() for _ in range(n)]
+n, m = map(int, sys.stdin.readline().split())
+l = list(map(int, sys.stdin.readline().split()))
+s = []
 
-age_name.sort(key=lambda x: (int(x[0])))
-
-sys.stdout.write('\n'.join(f'{x} {y}' for x, y in age_name))
+for _ in range(m):
+    i, j = map(int, sys.stdin.readline().split())
+    s.append(sum(l[i-1:j]))
+    
+sys.stdout.write("\n".join([str(i) for i in s]))
