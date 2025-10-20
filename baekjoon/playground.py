@@ -3,11 +3,13 @@
 import sys
 
 n, m = map(int, sys.stdin.readline().split())
-l = list(map(int, sys.stdin.readline().split()))
-s = []
+nums = list(map(int, sys.stdin.readline().split()))
 
+acc_nums = [0]
+
+for num in nums:
+    acc_nums.append(acc_nums[-1] + num)
+    
 for _ in range(m):
     i, j = map(int, sys.stdin.readline().split())
-    s.append(sum(l[i-1:j]))
-    
-sys.stdout.write("\n".join([str(i) for i in s]))
+    sys.stdout.write(f"{acc_nums[j] - acc_nums[i - 1]} \n")
