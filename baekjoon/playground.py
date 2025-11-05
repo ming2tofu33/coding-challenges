@@ -1,18 +1,5 @@
-# 11279 "최대 힙"
+# 1197 "최소 스패닝 트리"
 
 from heapq import heappush, heappop
 import sys
 input = sys.stdin.readline
-
-n = int(input())
-heap = []
-
-for _ in range(n):
-    x = -int(input())
-    if x:
-        heappush(heap, x)
-    else:
-        if heap:
-            print(-heappop(heap))
-        else:
-            print(0)
