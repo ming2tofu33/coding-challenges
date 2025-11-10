@@ -1,18 +1,12 @@
-# 11286 "절댓값 힙"
-
-from heapq import heappush, heappop
-import sys
-input = sys.stdin.readline
+# 11399 "ATM"
 
 n = int(input())
-heap = []
+p = list(map(int, input().split()))
 
-for _ in range(n):
-    x = int(input())
-    if x:
-        heappush(heap, (abs(x), x))
-    else:
-        if heap:
-            print(heappop(heap)[1])
-        else:
-            print(0)
+p.sort()
+t = [0]
+
+for i in p:
+    t.append(t[-1] + i)
+
+print(sum(t[1:]))
