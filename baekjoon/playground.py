@@ -1,12 +1,19 @@
-# 11399 "ATM"
+# 1764 "듣보잡"
 
-n = int(input())
-p = list(map(int, input().split()))
+import sys
+input = sys.stdin.readline
 
-p.sort()
-t = [0]
+n, m = map(int, input().split())
 
-for i in p:
-    t.append(t[-1] + i)
+heard = set(input().rstrip() for _ in range(n))
+both = []
 
-print(sum(t[1:]))
+for _ in range(m):
+    name = input().rstrip()
+    if name in heard:
+        both.append(name)
+
+both.sort()
+
+print(len(both))
+print('\n'.join(both))
