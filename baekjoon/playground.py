@@ -1,19 +1,10 @@
-# 1764 "듣보잡"
+# 2028 "자기복제수"
 
 import sys
 input = sys.stdin.readline
 
-n, m = map(int, input().split())
+t = int(input())
 
-heard = set(input().rstrip() for _ in range(n))
-both = []
-
-for _ in range(m):
-    name = input().rstrip()
-    if name in heard:
-        both.append(name)
-
-both.sort()
-
-print(len(both))
-print('\n'.join(both))
+for _ in range(t):
+    n = int(input())
+    print('YES' if int(str(n**2)[-len(str(n)):]) == n else 'NO')
