@@ -1,28 +1,15 @@
-# 5656 "비교 연산자"
+# 10816 "숫자 카드 2"
 
+from collections import Counter
 import sys
 input = sys.stdin.readline
 
-c = 1
+n = int(input())
+cards = list(map(int, input().split()))
+m = int(input())
+hold = list(map(int, input().split()))
 
-while True:
-    a, e, b = input().split()
-    a = int(a)
-    b = int(b)
-    if e == '>':
-        answer = 'true' if a > b else 'false'
-    elif e == '<':
-        answer = 'true' if a < b else 'false'
-    elif e == '>=':
-        answer = 'true' if a >= b else 'false'
-    elif e == '<=':
-        answer = 'true' if a <= b else 'false'
-    elif e == '==':
-        answer = 'true' if a == b else 'false'
-    elif e == '!=':
-        answer = 'true' if a != b else 'false'
-    else:
-        sys.exit()
-    
-    print(f"Case {c}: {answer}")
-    c += 1
+cnt = Counter(cards)
+
+for i in hold:
+    print(cnt.get(i, 0), end=' ')
