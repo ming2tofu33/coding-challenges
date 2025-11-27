@@ -1,15 +1,17 @@
-# 10816 "숫자 카드 2"
+# 34071 "첫 번째 문제는 정말 쉬운 문제일까?"
 
-from collections import Counter
 import sys
 input = sys.stdin.readline
 
 n = int(input())
-cards = list(map(int, input().split()))
-m = int(input())
-hold = list(map(int, input().split()))
+l = [int(input()) for _ in range(n)]
 
-cnt = Counter(cards)
+f = l[0]
+l.sort()
 
-for i in hold:
-    print(cnt.get(i, 0), end=' ')
+if f == l[0]:
+    print('ez')
+elif f == l[-1]:
+    print('hard')
+else:
+    print('?')
