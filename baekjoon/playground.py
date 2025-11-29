@@ -1,17 +1,26 @@
-# 34071 "첫 번째 문제는 정말 쉬운 문제일까?"
+# 9946 "단어 퍼즐"
 
+from collections import Counter
 import sys
 input = sys.stdin.readline
 
-n = int(input())
-l = [int(input()) for _ in range(n)]
+def game(before, after):
+    before_count = Counter(before)
+    after_count = Counter(after)
+    
+    if before_count == after_count:
+        return "same"
+    else:
+        return "different"
 
-f = l[0]
-l.sort()
+num = 1
 
-if f == l[0]:
-    print('ez')
-elif f == l[-1]:
-    print('hard')
-else:
-    print('?')
+while True:
+    before = input().strip()
+    after = input().strip()
+    
+    if before == "END" and after == "END":
+        break
+    
+    print(f'Case {num}: {game(before, after)}')
+    num += 1
