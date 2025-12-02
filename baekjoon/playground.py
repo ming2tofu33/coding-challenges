@@ -2,15 +2,18 @@
 
 import sys
 
-n = int(sys.stdin.readline())
+input = sys.stdin.readline
+write = sys.stdout.write
+
+n = int(input())
 
 cnt = [0] * 10001
 
 for _ in range(n):
-    a = int(sys.stdin.readline())
+    a = int(input())
     cnt[a] += 1
 
 for i in range(1, 10001):
     c = cnt[i]
-    if c:
-        sys.stdout.write((str(i) + '\n') * c)
+    for _ in range(c):
+        write(f"{i}\n")
