@@ -1,13 +1,25 @@
-# 10409 "서버"
+# 1406 "에디터"
 
-n, T = map(int, input().split())
-l = list(map(int, input().split()))
-time = 0
+from collections import deque
+import sys
+input = sys.stdin.readline
 
-for i, t in enumerate(l, start=1):
-    time += t
-    if time > T:
-        i -= 1
-        break
+left = deque(input().rstrip())
+right = deque()
+n = int(input())
 
-print(i)
+for _ in range(n):
+    cmd = input().rstrip()
+    if cmd[0] == 'P':
+        left.append(cmd[2])
+    elif cmd[0] == 'L':
+        if left:
+            right.appendleft(left.pop())
+    elif cmd[0] == 'D':
+        if right:
+            left.append(right.popleft())
+    elif cmd[0] == 'B':
+        if left:
+            left.pop()
+
+print(''.join(left) + ''.join(right))
