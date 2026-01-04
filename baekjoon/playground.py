@@ -1,21 +1,18 @@
-# 10820 "문자열 분석"
+# 32068 "보물 찾기"
 
 import sys
+input = sys.stdin.readline
 
-lines = sys.stdin.read().splitlines()
+def time_to_reach(S, X):
+    if X == S:
+        return 1
+    d = abs(X - S)
+    if X > S:
+        return 2 * d
+    else: 
+        return 2 * d + 1
 
-for line in lines:
-    lowercase = 0
-    uppercase = 0
-    numeric = 0
-    space = 0
-    for ch in line:
-        if ch.islower():
-            lowercase +=1
-        elif ch.isupper():
-            uppercase += 1
-        elif ch.isnumeric():
-            numeric += 1
-        elif ch == ' ':
-            space += 1
-    print(lowercase, uppercase, numeric, space)
+T = int(input())
+for _ in range(T):
+    L, R, S = map(int, input().split())
+    print(min(time_to_reach(S, L), time_to_reach(S, R)))
