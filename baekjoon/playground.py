@@ -1,18 +1,27 @@
-# 32068 "보물 찾기"
+# 18258 "큐 2"
 
+from collections import deque
 import sys
 input = sys.stdin.readline
 
-def time_to_reach(S, X):
-    if X == S:
-        return 1
-    d = abs(X - S)
-    if X > S:
-        return 2 * d
-    else: 
-        return 2 * d + 1
+n = int(input())
+q = deque()
+out = []
 
-T = int(input())
-for _ in range(T):
-    L, R, S = map(int, input().split())
-    print(min(time_to_reach(S, L), time_to_reach(S, R)))
+for _ in range(n):
+    cmd = input().split()
+
+    if cmd[0] == 'push':
+        q.append(int(cmd[1]))
+    elif cmd[0] == 'pop':
+        out.append(str(q.popleft() if q else -1))
+    elif cmd[0] == 'size':
+        out.append(str(len(q)))
+    elif cmd[0] == 'empty':
+        out.append('0' if q else '1')
+    elif cmd[0] == 'front':
+        out.append(str(q[0] if q else -1))
+    elif cmd[0] == 'back':
+        out.append(str(q[-1] if q else -1))
+
+sys.stdout.write("\n".join(out))
