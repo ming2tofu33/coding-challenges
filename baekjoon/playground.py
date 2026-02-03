@@ -1,20 +1,17 @@
-# 20920 "영단어 암기는 괴로워"
-
 import sys
+import heapq
 input = sys.stdin.readline
 
-d = {}
-n, m = map(int, input().split())
+n = int(input())
+hq = []
 
 for _ in range(n):
-    w = input().rstrip()
-    if len(w) >= m:
-        d[w] = d.get(w, 0) + 1
+    for x in map(int, input().split()):
+        if len(hq) < n:
+            heapq.heappush(hq, x)
+        else:
+            # 현재 힙의 최소값보다 큰 수만 교체
+            if x > hq[0]:
+                heapq.heapreplace(hq, x)
 
-s = []
-for word, cnt in d.items():
-    s.append((cnt, word))
-
-s.sort(key=lambda x: (-x[0], -len(x[1]), x[1]))
-
-print('\n'.join([word for _, word in s]))
+print(hq[0])
